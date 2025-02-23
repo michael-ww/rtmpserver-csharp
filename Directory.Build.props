@@ -1,0 +1,17 @@
+<Project>
+  <!-- See https://aka.ms/dotnet/msbuild/customize for more details on customizing your build -->
+  <PropertyGroup>
+    <Company>Belly</Company>
+    <Author>Michael Ren</Author>
+    <ProjectName>RtmpServer</ProjectName>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>12.0</LangVersion>
+    <RootNamespace>$(Company).$(ProjectName).$(MSBuildProjectName)</RootNamespace>
+    <AssemblyName>$(Company).$(ProjectName).$(MSBuildProjectName)</AssemblyName>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <AnalysisMode>Default</AnalysisMode>
+  </PropertyGroup>
+</Project>

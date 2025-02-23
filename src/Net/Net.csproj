@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="System.IO.Pipelines" />
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+  </ItemGroup>
+
+</Project>
