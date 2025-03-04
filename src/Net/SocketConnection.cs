@@ -8,29 +8,18 @@ using System.Threading.Tasks;
 
 using Microsoft.Extensions.Logging;
 
-public class SocketConnection
+public class SocketConnection(Socket socket, PipeWriter input, PipeReader output, ILogger logger)
 {
-    private readonly ILogger logger;
-    private readonly Socket socket;
-    private readonly PipeReader output;
-    private readonly PipeWriter input;
-    private readonly IList<ArraySegment<byte>> forSending;
+    private readonly ILogger logger = logger;
+    private readonly Socket socket = socket;
+    private readonly PipeReader output = output;
+    private readonly PipeWriter input = input;
+    private readonly IList<ArraySegment<byte>> forSending = [];
 
-    public string ID { get; init; }
+    public string ID { get; init; } = $"{DateTimeOffset.Now.ToString("yyyyMMddHHmmssfff")}{Random.Shared.Next(100, 999)}";
     public bool IsConnected => this.socket?.Connected ?? false;
     public string LocalEndPoint => this.socket?.LocalEndPoint?.ToString() ?? string.Empty;
     public string RemoteEndPoint => this.socket?.RemoteEndPoint?.ToString() ?? string.Empty;
-
-
-    public SocketConnection(Socket socket, PipeWriter input, PipeReader output, ILogger logger)
-    {
-        this.socket = socket;
-        this.output = output;
-        this.input = input;
-        this.forSending = [];
-        this.logger = logger;
-        this.ID = $"{DateTimeOffset.Now.ToString("yyyyMMddHHmmssfff")}{Random.Shared.Next(100, 999)}";
-    }
 
     public async Task StartAsync()
     {
